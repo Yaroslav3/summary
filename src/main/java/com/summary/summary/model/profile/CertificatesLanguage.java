@@ -1,6 +1,5 @@
 package com.summary.summary.model.profile;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,12 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "site")
-public class Site {
+@Table(name = "certificates_language")
+public class CertificatesLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "site_id")
+    @Column(name = "certificates_id")
     private Long id;
-    @Column(name = "site")
-    private String site;
+    @Column(name = "certificates")
+    private String certificates;
+    @Column(name = "photo")
+    private String photo;
 }

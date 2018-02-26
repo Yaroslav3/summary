@@ -1,10 +1,7 @@
 package com.summary.summary.model.profile;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,12 +10,14 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 @Table(name = "profile")
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "profile_id")
-    private long id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "surname")
