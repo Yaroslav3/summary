@@ -14,7 +14,6 @@ import javax.persistence.*;
 @ToString
 @Table(name = "certificates_course")
 public class CertificatesCourse {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "certificates_id")

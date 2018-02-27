@@ -23,8 +23,8 @@ public class Course {
     private String course_name;
     @Column(name = "course_level")
     private String course_level;
-    @Column(name = "data_begin")
+    @Column(name = "data_begin",columnDefinition="datetime NULL")
     private LocalDateTime data_begin;
-    @Column(name = "expiration_date")
+    @Column(name = "expiration_date",columnDefinition="datetime NULL")
     private LocalDateTime expiration_date;
 }

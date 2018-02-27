@@ -12,11 +12,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "profile")
-public class Profile {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "profile_id")
+    @Column(name = "user_id")
     private Long id;
     @Column(name = "name")
     private String name;
@@ -28,4 +28,8 @@ public class Profile {
     private int age;
     @Column(name = "email")
     private String email;
+    @Column(name = "roles")
+    private String roles;
+    @Column(name = "description")
+    private String description;
 }

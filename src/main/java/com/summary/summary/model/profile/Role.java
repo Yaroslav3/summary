@@ -1,10 +1,8 @@
 package com.summary.summary.model.profile;
 
-
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -13,13 +11,13 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "photo")
-public class Photo {
+@Table(name = "role_id")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "photo_id")
-    private Long id;
-    @Column(name = "photo")
-    private String photo;
+    @Column(name = "role_id")
+    private int roleId;
 
+    @Column(name = "role")
+    private String role;
 }
