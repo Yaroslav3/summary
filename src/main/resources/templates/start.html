@@ -15,7 +15,11 @@
 <body style="padding: 20px">
 
 <div>
-    <nav class="navbar navbar-dark bg-dark" style="color: white">SUMMARY</nav>
+    <nav class="navbar navbar-dark bg-dark" style="color: white">SUMMARY
+        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true" style="color: blue"></span>
+        <a href="update.html" class="nanbar-form navbar-right" style="color: white">My Account</a>
+    </nav>
+
 </div>
 
 <br/>
@@ -33,9 +37,21 @@
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <br/>
-        <br/>
-        <div>
-            <p th:text="${profile}"></p>
+        <div class="row" style="padding: 20px">
+            <div class="col-md-3" style="padding: 20px">
+                <img src="photo/9u7ahfc.jpeg" width="200" height="280"/>
+            </div>
+            <div class="col-md-2">
+                <div style="padding: 20px">
+                    <label style="color: black">Name</label>
+                    <br/>
+                    <label style="color: black">Data of birth</label>
+                </div>
+            </div>
+            <div class="col-md-7" style="padding: 20px">
+                <p th:text="${name}"></p>
+                <br/>
+            </div>
         </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
