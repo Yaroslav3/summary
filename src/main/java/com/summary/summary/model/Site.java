@@ -13,16 +13,18 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "role")
-public class Role {
+@Table(name = "site")
+public class Site {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id")
+    @Column(name = "site_id")
     private Long id;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "site_name")
+    private String siteName;
 
-    @OneToMany(mappedBy = "role")
-    private Set<User>users;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User users;
 }

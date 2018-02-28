@@ -2,9 +2,10 @@ package com.summary.summary.model;
 
 
 import lombok.*;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "name")
@@ -28,8 +29,14 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
-//    @Column(name = "data_of_birth")
-//    private LocalDateTime localDateTime;
+    @Column(name = "nationality")
+    private String nationality;
+
+    @Column(name = "Personal_qualities")
+    private String personalQualities;
+
+    @Column(name = "data_of_birth")
+    private String data;
 
     @Column(name = "age")
     private int age;
@@ -43,10 +50,11 @@ public class User {
     @Column(name = "description", length = 254)
     private String description;
 
-    @OneToMany
-    @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-
+    @ManyToOne
+    @JoinColumn(name = "site_id")
+    private Site site;
 }
