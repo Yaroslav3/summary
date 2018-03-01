@@ -40,7 +40,9 @@
         <br/>
         <div class="row">
             <div class="col-md-3" style="padding: 20px">
-                <img src="photo/9u7ahfc.jpeg" class="img-responsive img-rounded" width="200" height="280"/>
+                <div th:each="elem:${photo}">
+                    <img th:icon="elem" class="img-responsive img-rounded" width="200" height="280"/>
+                </div>
             </div>
             <div class="col-md-3" style="padding: 20px">
                 <a style="color: black">Name:</a>
@@ -48,6 +50,8 @@
                 <a style="color: black">Data of birth:</a>
                 <br/>
                 <a style="color: black">Nationality:</a>
+                <br/>
+                <a style="color: black">Phone:</a>
                 <br/>
                 <a style="color: black">Email:</a>
                 <br/>
@@ -60,12 +64,24 @@
                 <br/>
                 <a th:text="${nationality}"></a>
                 <br/>
+                <a th:text="${phone}"></a>
+                <br/>
                 <a th:text="${email}"></a>
                 <br/>
+                <div th:each="elem:${site}">
+                    <a th:text="${elem}" style="color:#0a51b4"></a>
+                    <br/>
+                </div>
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div style="padding: 20px">
+           <form th:action="@{/atart/course}" method="get">
+            <p th:text="${qwe}"></p>
+           </form>
+        </div>
+    </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 

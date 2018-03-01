@@ -1,10 +1,10 @@
-package com.summary.summary.model;
+package com.summary.summary.model.user;
 
 
+import com.summary.summary.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -21,10 +21,10 @@ public class Site {
     @Column(name = "site_id")
     private Long id;
 
-    @Column(name = "site_name")
-    private String siteName;
+    @Column(name = "sites")
+    private String sites;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User users;
+    private User user;
 }

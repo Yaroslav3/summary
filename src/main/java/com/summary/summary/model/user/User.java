@@ -1,12 +1,11 @@
-package com.summary.summary.model;
+package com.summary.summary.model.user;
 
 
+import com.summary.summary.model.course.Course;
 import lombok.*;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,6 +31,9 @@ public class User {
     @Column(name = "nationality")
     private String nationality;
 
+    @Column(name = "phone")
+    private String phone;
+
     @Column(name = "Personal_qualities")
     private String personalQualities;
 
@@ -50,11 +52,14 @@ public class User {
     @Column(name = "description", length = 254)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
+    private List<Site> sites;
 
-    @ManyToOne
-    @JoinColumn(name = "site_id")
-    private Site site;
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
+    private List<Photo> photos;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
+    private List<Course> courses;
+
+
 }
