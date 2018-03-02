@@ -5,6 +5,7 @@ import com.summary.summary.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.websocket.Decoder;
 
 @Entity
 @Getter
@@ -23,6 +24,7 @@ public class Site {
 
     @Column(name = "sites")
     private String sites;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

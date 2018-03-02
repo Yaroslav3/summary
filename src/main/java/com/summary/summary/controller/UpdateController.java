@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("update")
 public class UpdateController {
 
-    @RequestMapping("/update")
+    @RequestMapping("/user")
     public String start(Model model) {
         model.addAttribute("update", "hello my friend");
         return "update";

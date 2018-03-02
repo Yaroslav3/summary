@@ -21,11 +21,23 @@ public class Course {
     @Column(name = "course_id")
     private Long id;
 
-    @Column(name = "name_course")
-    private String nameCourse;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "site_name")
     private String site_name;
+
+    @Column(name = "data")
+    private String data;
+
+    @Column(name = "name_course")
+    private String nameCourse;
+
+    @Column(name = "descriptions")
+    private String descriptions;
+
+    @Column(name = "certificatePhoto")
+    private String certificatePhoto;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

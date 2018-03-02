@@ -18,7 +18,7 @@
 <div>
     <nav class="navbar navbar-dark bg-dark" style="color: white">SUMMARY
         <span class="glyphicon glyphicon-triangle-right" aria-hidden="true" style="color: blue"></span>
-        <a href="update.html" class="nanbar-form navbar-right" style="color: white">My Account</a>
+        <a href="/update/user" class="nanbar-form navbar-right" style="color: white">My Account</a>
     </nav>
 
 </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-md-3" style="padding: 20px">
                 <div th:each="elem:${photo}">
-                    <img th:icon="elem" class="img-responsive img-rounded" width="200" height="280"/>
+                    <img th:icon="elem" class="img-responsive img-rounded" width="200" height="280" src="#"/>
                 </div>
             </div>
             <div class="col-md-3" style="padding: 20px">
@@ -58,33 +58,87 @@
                 <a style="color: black">Site:</a>
             </div>
             <div class="col-md-6" style="padding: 20px">
-                <a th:text="${name}"></a>
-                <br/>
-                <a th:text="${data}"></a>
-                <br/>
-                <a th:text="${nationality}"></a>
-                <br/>
-                <a th:text="${phone}"></a>
-                <br/>
-                <a th:text="${email}"></a>
-                <br/>
-                <div th:each="elem:${site}">
-                    <a th:text="${elem}" style="color:#0a51b4"></a>
+                <form th:object="${user}" method="get">
+                    <a th:text="*{name}"></a> <span></span><a th:text="*{surname}"></a>
                     <br/>
-                </div>
+                    <a th:text="*{data}"></a>
+                    <br/>
+                    <a th:text="*{nationality}"></a>
+                    <br/>
+                    <a th:text="*{phone}"></a>
+                    <br/>
+                    <a th:text="*{email}"></a>
+                    <br/>
+                </form>
+                <form method="post">
+                    <div th:each="elem:${site}">
+                        <a th:text="${elem}" style="color:#0a51b4"></a>
+                        <br/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div style="padding: 20px">
-           <form th:action="@{/atart/course}" method="get">
-            <p th:text="${qwe}"></p>
-           </form>
-        </div>
+        <form th:each="elem:${course}">
+            <div class="row">
+                <div class="col-md-2" style="padding: 20px"><code>School</code>
+                    <br/>
+                    <p>
+                        <small>
+                            <mark th:text="${elem.name}"></mark>
+                        </small>
+                    </p>
+                </div>
+                <div class="col-md-3" style="padding: 20px">Site
+                    <br/>
+                    <p>
+                        <small th:text="${elem.site_name}"></small>
+                    </p>
+                </div>
+                <div class="col-md-2" style="padding: 20px">Name course
+                    <br/>
+                    <p>
+                        <small th:text="${elem.nameCourse}"></small>
+                    </p>
+                </div>
+                <div class="col-md-1" style="padding: 20px">Data
+                    <br/>
+                    <p>
+                        <small th:text="${elem.data}"></small>
+                    </p>
+                </div>
+                <div class="col-md-2" style="padding: 20px">Description
+                    <br/>
+                    <p>
+                        <a class="btn btn-outline-dark btn-sm" data-toggle="collapse" href="#collapseExample"
+                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <small style="color: red">more info</small>
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <p>
+                                <small th:text="${elem.descriptions}"></small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-md-1" style="padding: 20px">Certificate
+                    <p>
+                        <small th:text="${elem.certificatePhoto}"></small>
+                    </p>
+                </div>
+                <br/>
+            </div>
+        </form>
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
-
+<script>
+    $('.collapse').collapse()
+</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

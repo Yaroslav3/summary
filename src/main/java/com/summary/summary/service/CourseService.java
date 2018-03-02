@@ -1,8 +1,11 @@
 package com.summary.summary.service;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import com.summary.summary.model.course.Course;
+
+import java.util.List;
 
 
 public interface CourseService {
+
+    List<Course> getByIdCourse(Long idUser);
 }
