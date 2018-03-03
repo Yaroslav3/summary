@@ -9,6 +9,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+<link rel="stylesheet" href="start.css"/>
 
 <head>
     <title>Summary</title>
@@ -16,7 +17,8 @@
 <body style="padding: 20px">
 
 <div>
-    <nav class="navbar navbar-dark bg-dark" style="color: white">SUMMARY
+    <nav class="navbar navbar-dark bg-dark" style="color: white">
+        <h>SUMMARY</h>
         <span class="glyphicon glyphicon-triangle-right" aria-hidden="true" style="color: blue"></span>
         <a href="/update/user" class="nanbar-form navbar-right" style="color: white">My Account</a>
     </nav>
@@ -58,7 +60,7 @@
                 <a style="color: black">Site:</a>
             </div>
             <div class="col-md-6" style="padding: 20px">
-                <form th:object="${user}" method="get">
+                <form th:object="${user}">
                     <a th:text="*{name}"></a> <span></span><a th:text="*{surname}"></a>
                     <br/>
                     <a th:text="*{data}"></a>
@@ -80,65 +82,39 @@
         </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <form th:each="elem:${course}">
-            <div class="row">
-                <div class="col-md-2" style="padding: 20px"><code>School</code>
-                    <br/>
-                    <p>
-                        <small>
-                            <mark th:text="${elem.name}"></mark>
-                        </small>
-                    </p>
-                </div>
-                <div class="col-md-3" style="padding: 20px">Site
-                    <br/>
-                    <p>
-                        <small th:text="${elem.site_name}"></small>
-                    </p>
-                </div>
-                <div class="col-md-2" style="padding: 20px">Name course
-                    <br/>
-                    <p>
-                        <small th:text="${elem.nameCourse}"></small>
-                    </p>
-                </div>
-                <div class="col-md-1" style="padding: 20px">Data
-                    <br/>
-                    <p>
-                        <small th:text="${elem.data}"></small>
-                    </p>
-                </div>
-                <div class="col-md-2" style="padding: 20px">Description
-                    <br/>
-                    <p>
-                        <a class="btn btn-outline-dark btn-sm" data-toggle="collapse" href="#collapseExample"
-                           role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <small style="color: red">more info</small>
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            <p>
-                                <small th:text="${elem.descriptions}"></small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-                <div class="col-md-1" style="padding: 20px">Certificate
-                    <p>
-                        <small th:text="${elem.certificatePhoto}"></small>
-                    </p>
-                </div>
-                <br/>
-            </div>
+        <div class="col-md-12" style="padding: 20px">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col"><code>School</code></th>
+                    <th scope="col">Site</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Name course</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Certificate</th>
+                </tr>
+                </thead>
+                <form th:each="elem:${course}">
+                    <tbody>
+                    <tr>
+                        <td><small th:text="${elem.name}"></small></td>
+                        <td ><small th:text="${elem.site_name}"></small></td>
+                        <td ><small th:text="${elem.nameCourse}"></small></td>
+                        <td ><small th:text="${elem.data}"></small></td>
+                        <td ><small th:text="${elem.descriptions}"></small></td>
+                        <td ><small th:text="${elem.certificatePhoto}"></small></td>
+                    </tr>
+                    </tbody>
+                </form>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <form th:action="@{/course}" method="post">dvsvsdsd
+            <p th:text="${qwe}"></p>
         </form>
     </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
-<script>
-    $('.collapse').collapse()
-</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

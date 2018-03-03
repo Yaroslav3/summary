@@ -12,6 +12,7 @@ import com.summary.summary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/start")
+@RequestMapping()
 public class StartController {
     @Autowired
     private UserService userService;
@@ -33,7 +34,7 @@ public class StartController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/start")
     public String showProfile(Model model) {
         List<String> list = new ArrayList<>();
         List<String> listCourseName = new ArrayList<>();
@@ -41,11 +42,11 @@ public class StartController {
         User user = userService.findById(1L);
         List<Photo> byPhoto = photoService.findByPhoto(1L);
         List<Site> bySites = siteService.findBySites(1L);
-        List<Course> courses = courseService.getByIdCourse(1L);
 
         for (Site elem : bySites) {
             list.add(elem.getSites());
         }
+        List<Course> courses = showCourseUser();
 
         model.addAttribute("user", user);
         model.addAttribute("course", courses);
@@ -58,5 +59,11 @@ public class StartController {
 
     private List<Course> showCourseUser() {
         return courseService.getByIdCourse(1L);
+    }
+
+    @PostMapping("/course")
+    public String show(Model model) {
+        model.addAttribute("qwe","123213");
+        return "start";
     }
 }
