@@ -1,0 +1,100 @@
+create table course
+(
+	course_id bigint auto_increment
+		primary key,
+	name_course varchar(255) null,
+	site_name varchar(255) null,
+	user_id bigint null,
+	certificate_photo varchar(255) null,
+	data varchar(255) null,
+	descriptions text null,
+	name varchar(255) null
+)
+engine=InnoDB
+;
+
+create index FKo3767wbj6ow5axv38qej0gxo9
+	on course (user_id)
+;
+
+create table education
+(
+	education_id bigint auto_increment
+		primary key,
+	description varchar(255) null,
+	education varchar(255) null,
+	user_id bigint null
+)
+engine=InnoDB
+;
+
+create index FKaw3ebf3585a1ndgqnk6k6hosc
+	on education (user_id)
+;
+
+create table photo
+(
+	site_id bigint auto_increment
+		primary key,
+	sites varchar(255) null,
+	user_id bigint null
+)
+engine=InnoDB
+;
+
+create index FKncp190mcvd1kd21cmnibcm19s
+	on photo (user_id)
+;
+
+create table site
+(
+	site_id bigint auto_increment
+		primary key,
+	user_id bigint null,
+	sites varchar(255) null
+)
+engine=InnoDB
+;
+
+create index FK1jsyp7cbq68hqm2eb1qvmya8a
+	on site (user_id)
+;
+
+create table user
+(
+	user_id bigint auto_increment
+		primary key,
+	age int null,
+	data_of_birth varchar(255) null,
+	description varchar(254) null,
+	email varchar(255) null,
+	name varchar(255) null,
+	nationality varchar(255) null,
+	password varchar(255) null,
+	personal_qualities varchar(255) null,
+	surname varchar(255) null,
+	phone varchar(255) null
+)
+engine=InnoDB
+;
+
+alter table course
+	add constraint FKo3767wbj6ow5axv38qej0gxo9
+		foreign key (user_id) references user (user_id)
+;
+
+alter table education
+	add constraint FKaw3ebf3585a1ndgqnk6k6hosc
+		foreign key (user_id) references user (user_id)
+;
+
+alter table photo
+	add constraint FKncp190mcvd1kd21cmnibcm19s
+		foreign key (user_id) references user (user_id)
+;
+
+alter table site
+	add constraint FK1jsyp7cbq68hqm2eb1qvmya8a
+		foreign key (user_id) references user (user_id)
+;
+
